@@ -30,5 +30,5 @@ function sendMessage(message) {
 }
 
 function setText(textarea) {
-    $("#solveme").val("x = x, 3y * x = 8, f(2) = 87, log(x) * n = O, 2 * 2(x * y) = 0.5,")
+    $("#solveme").val("x = x, 3y * x = 8, f(2) = 87, log(x) * n = O, 2 * 2(x * y) = 0.5")
 }
