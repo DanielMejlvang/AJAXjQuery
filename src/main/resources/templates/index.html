@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script type="text/javascript" th:src="@{/functions.js}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<h1>Welcome</h1>
+<!--Check jQuery status-->
+<div id="jQueryStatus" style="position: absolute; top: 0; right: 0">jQuery is not working correctly</div>
+
+<!--Timer-->
+<label id="minutes">00</label>:<label id="seconds">00</label>
+
+<div id="Workplace">
+    <img src="https://scx2.b-cdn.net/gfx/news/2018/8-mathematicia.jpg" alt="" width="400px">
+    <br>Solve and show your work!<br>
+    <textarea name="solvingarea" id="solveme" cols="30" rows="10"></textarea><br>
+    <button onclick="setText(this)">Put text in textarea</button>
+</div>
+
+<div id="normalformsubmit" style="position: absolute; left: 500px; top: 300px; border-style: solid">
+    <h4>Got a question? Ask it here!</h4>
+    <form action="/">
+        <input type="text" placeholder="Type your question..."><br>
+        <input type="submit" value="Normal form submit">
+    </form>
+</div>
+
+<!--Chat window for asynchronous work-->
+<div style="width: 350px; position: absolute; right: 200px; bottom: 0; border-style: solid">
+    <h3>Chat Window</h3>
+    <div id="chatwindow"></div>
+    <form id="sendMessageForm">
+        <input type="text" id="message" placeholder="Type message here...">
+        <input type="submit" value="Send">
+    </form>
+</div>
+
+<script type="application/javascript">
+    checkjQuery();
+    preventFormSubmitDefault($("#sendMessageForm"));
+
+    //timer script below
+    var minutesLabel = document.getElementById("minutes");
+    var secondsLabel = document.getElementById("seconds");
+    var totalSeconds = 0;
+    setInterval(setTime, 1000);
+
+    function setTime() {
+        ++totalSeconds;
+        secondsLabel.innerHTML = pad(totalSeconds % 60);
+        minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+    }
+
+    function pad(val) {
+        var valString = val + "";
+        if (valString.length < 2) {
+            return "0" + valString;
+        } else {
+            return valString;
+        }
+    }
+</script>
+</body>
+</html>
